@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demomstest.mapper.AreaMapper">
+  <resultMap id="BaseResultMap" type="com.demomstest.entity.Area">
+    <id column="area_id" jdbcType="VARCHAR" property="areaId" />
+    <result column="area_name" jdbcType="VARCHAR" property="areaName" />
+    <result column="area_type" jdbcType="VARCHAR" property="areaType" />
+    <result column="area_status" jdbcType="CHAR" property="areaStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    area_id, area_name, area_type, area_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from da_area
+    where area_id = #{areaId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from da_area
+    where area_id = #{areaId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.demomstest.entity.Area">
+    insert into da_area (area_id, area_name, area_type, 
+      area_status)
+    values (#{areaId,jdbcType=VARCHAR}, #{areaName,jdbcType=VARCHAR}, #{areaType,jdbcType=VARCHAR}, 
+      #{areaStatus,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.demomstest.entity.Area">
+    insert into da_area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="areaName != null">
+        area_name,
+      </if>
+      <if test="areaType != null">
+        area_type,
+      </if>
+      <if test="areaStatus != null">
+        area_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="areaId != null">
+        #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null">
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaType != null">
+        #{areaType,jdbcType=VARCHAR},
+      </if>
+      <if test="areaStatus != null">
+        #{areaStatus,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demomstest.entity.Area">
+    update da_area
+    <set>
+      <if test="areaName != null">
+        area_name = #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaType != null">
+        area_type = #{areaType,jdbcType=VARCHAR},
+      </if>
+      <if test="areaStatus != null">
+        area_status = #{areaStatus,jdbcType=CHAR},
+      </if>
+    </set>
+    where area_id = #{areaId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demomstest.entity.Area">
+    update da_area
+    set area_name = #{areaName,jdbcType=VARCHAR},
+      area_type = #{areaType,jdbcType=VARCHAR},
+      area_status = #{areaStatus,jdbcType=CHAR}
+    where area_id = #{areaId,jdbcType=VARCHAR}
+  </update>
+</mapper>

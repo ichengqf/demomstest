@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demomstest.mapper.CarColorMapper" >
+  <resultMap id="BaseResultMap" type="com.demomstest.entity.CarColor" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="color_id" property="colorId" jdbcType="VARCHAR" />
+    <result column="series_id" property="seriesId" jdbcType="VARCHAR" />
+    <result column="color_name_en" property="colorNameEn" jdbcType="VARCHAR" />
+    <result column="color_name_cn" property="colorNameCn" jdbcType="VARCHAR" />
+    <result column="color_painting" property="colorPainting" jdbcType="VARCHAR" />
+    <result column="color_flag" property="colorFlag" jdbcType="CHAR" />
+    <result column="color_status" property="colorStatus" jdbcType="CHAR" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, color_id, series_id, color_name_en, color_name_cn, color_painting, color_flag, 
+    color_status, create_user, create_time, update_time, remark, image_url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ec_car_color
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ec_car_color
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.demomstest.entity.CarColor" >
+    insert into ec_car_color (id, color_id, series_id, 
+      color_name_en, color_name_cn, color_painting, 
+      color_flag, color_status, create_user, 
+      create_time, update_time, remark, 
+      image_url)
+    values (#{id,jdbcType=VARCHAR}, #{colorId,jdbcType=VARCHAR}, #{seriesId,jdbcType=VARCHAR}, 
+      #{colorNameEn,jdbcType=VARCHAR}, #{colorNameCn,jdbcType=VARCHAR}, #{colorPainting,jdbcType=VARCHAR}, 
+      #{colorFlag,jdbcType=CHAR}, #{colorStatus,jdbcType=CHAR}, #{createUser,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{imageUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.demomstest.entity.CarColor" >
+    insert into ec_car_color
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="colorId != null" >
+        color_id,
+      </if>
+      <if test="seriesId != null" >
+        series_id,
+      </if>
+      <if test="colorNameEn != null" >
+        color_name_en,
+      </if>
+      <if test="colorNameCn != null" >
+        color_name_cn,
+      </if>
+      <if test="colorPainting != null" >
+        color_painting,
+      </if>
+      <if test="colorFlag != null" >
+        color_flag,
+      </if>
+      <if test="colorStatus != null" >
+        color_status,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="imageUrl != null" >
+        image_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="colorId != null" >
+        #{colorId,jdbcType=VARCHAR},
+      </if>
+      <if test="seriesId != null" >
+        #{seriesId,jdbcType=VARCHAR},
+      </if>
+      <if test="colorNameEn != null" >
+        #{colorNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="colorNameCn != null" >
+        #{colorNameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="colorPainting != null" >
+        #{colorPainting,jdbcType=VARCHAR},
+      </if>
+      <if test="colorFlag != null" >
+        #{colorFlag,jdbcType=CHAR},
+      </if>
+      <if test="colorStatus != null" >
+        #{colorStatus,jdbcType=CHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null" >
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demomstest.entity.CarColor" >
+    update ec_car_color
+    <set >
+      <if test="colorId != null" >
+        color_id = #{colorId,jdbcType=VARCHAR},
+      </if>
+      <if test="seriesId != null" >
+        series_id = #{seriesId,jdbcType=VARCHAR},
+      </if>
+      <if test="colorNameEn != null" >
+        color_name_en = #{colorNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="colorNameCn != null" >
+        color_name_cn = #{colorNameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="colorPainting != null" >
+        color_painting = #{colorPainting,jdbcType=VARCHAR},
+      </if>
+      <if test="colorFlag != null" >
+        color_flag = #{colorFlag,jdbcType=CHAR},
+      </if>
+      <if test="colorStatus != null" >
+        color_status = #{colorStatus,jdbcType=CHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null" >
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demomstest.entity.CarColor" >
+    update ec_car_color
+    set color_id = #{colorId,jdbcType=VARCHAR},
+      series_id = #{seriesId,jdbcType=VARCHAR},
+      color_name_en = #{colorNameEn,jdbcType=VARCHAR},
+      color_name_cn = #{colorNameCn,jdbcType=VARCHAR},
+      color_painting = #{colorPainting,jdbcType=VARCHAR},
+      color_flag = #{colorFlag,jdbcType=CHAR},
+      color_status = #{colorStatus,jdbcType=CHAR},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

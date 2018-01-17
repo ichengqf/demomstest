@@ -19,6 +19,7 @@
 	</properties>
 	<modules>
 		<module>demomstest-services</module>
+		<module>demomstest-dao</module>
 	</modules>
 
 	<dependencyManagement>
@@ -36,6 +37,15 @@
 	</dependencyManagement>
 
 	<dependencies>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>5.1.36</version>
+    </dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

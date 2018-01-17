@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demomstest.mapper.OrganaizationMapper">
+  <resultMap id="BaseResultMap" type="com.demomstest.entity.Organaization">
+    <id column="org_id" jdbcType="VARCHAR" property="orgId" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="org_address" jdbcType="VARCHAR" property="orgAddress" />
+    <result column="org_coordinate" jdbcType="VARCHAR" property="orgCoordinate" />
+    <result column="org_status" jdbcType="CHAR" property="orgStatus" />
+    <result column="province_id" jdbcType="VARCHAR" property="provinceId" />
+    <result column="city_id" jdbcType="VARCHAR" property="cityId" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="org_type" jdbcType="CHAR" property="orgType" />
+    <result column="org_bu_type" jdbcType="CHAR" property="orgBuType" />
+    <result column="org_longitude" jdbcType="VARCHAR" property="orgLongitude" />
+    <result column="org_latitude" jdbcType="VARCHAR" property="orgLatitude" />
+    <result column="area_id" jdbcType="VARCHAR" property="areaId" />
+    <result column="county_id" jdbcType="VARCHAR" property="countyId" />
+    <result column="post_code" jdbcType="VARCHAR" property="postCode" />
+    <result column="net_code" jdbcType="VARCHAR" property="netCode" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="sales_phone" jdbcType="VARCHAR" property="salesPhone" />
+    <result column="service_phone" jdbcType="VARCHAR" property="servicePhone" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    org_id, org_name, org_address, org_coordinate, org_status, province_id, city_id, 
+    create_user, create_time, update_time, remark, org_type, org_bu_type, org_longitude, 
+    org_latitude, area_id, county_id, post_code, net_code, contact_phone, sales_phone, 
+    service_phone
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from da_organization
+    where org_id = #{orgId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from da_organization
+    where org_id = #{orgId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.demomstest.entity.Organaization">
+    insert into da_organization (org_id, org_name, org_address, 
+      org_coordinate, org_status, province_id, 
+      city_id, create_user, create_time, 
+      update_time, remark, org_type, 
+      org_bu_type, org_longitude, org_latitude, 
+      area_id, county_id, post_code, 
+      net_code, contact_phone, sales_phone, 
+      service_phone)
+    values (#{orgId,jdbcType=VARCHAR}, #{orgName,jdbcType=VARCHAR}, #{orgAddress,jdbcType=VARCHAR}, 
+      #{orgCoordinate,jdbcType=VARCHAR}, #{orgStatus,jdbcType=CHAR}, #{provinceId,jdbcType=VARCHAR}, 
+      #{cityId,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{orgType,jdbcType=CHAR}, 
+      #{orgBuType,jdbcType=CHAR}, #{orgLongitude,jdbcType=VARCHAR}, #{orgLatitude,jdbcType=VARCHAR}, 
+      #{areaId,jdbcType=VARCHAR}, #{countyId,jdbcType=VARCHAR}, #{postCode,jdbcType=VARCHAR}, 
+      #{netCode,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, #{salesPhone,jdbcType=VARCHAR}, 
+      #{servicePhone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.demomstest.entity.Organaization">
+    insert into da_organization
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="orgName != null">
+        org_name,
+      </if>
+      <if test="orgAddress != null">
+        org_address,
+      </if>
+      <if test="orgCoordinate != null">
+        org_coordinate,
+      </if>
+      <if test="orgStatus != null">
+        org_status,
+      </if>
+      <if test="provinceId != null">
+        province_id,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="orgType != null">
+        org_type,
+      </if>
+      <if test="orgBuType != null">
+        org_bu_type,
+      </if>
+      <if test="orgLongitude != null">
+        org_longitude,
+      </if>
+      <if test="orgLatitude != null">
+        org_latitude,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="countyId != null">
+        county_id,
+      </if>
+      <if test="postCode != null">
+        post_code,
+      </if>
+      <if test="netCode != null">
+        net_code,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="salesPhone != null">
+        sales_phone,
+      </if>
+      <if test="servicePhone != null">
+        service_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgAddress != null">
+        #{orgAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCoordinate != null">
+        #{orgCoordinate,jdbcType=VARCHAR},
+      </if>
+      <if test="orgStatus != null">
+        #{orgStatus,jdbcType=CHAR},
+      </if>
+      <if test="provinceId != null">
+        #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="orgType != null">
+        #{orgType,jdbcType=CHAR},
+      </if>
+      <if test="orgBuType != null">
+        #{orgBuType,jdbcType=CHAR},
+      </if>
+      <if test="orgLongitude != null">
+        #{orgLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="orgLatitude != null">
+        #{orgLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="countyId != null">
+        #{countyId,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null">
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="netCode != null">
+        #{netCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="salesPhone != null">
+        #{salesPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="servicePhone != null">
+        #{servicePhone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demomstest.entity.Organaization">
+    update da_organization
+    <set>
+      <if test="orgName != null">
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgAddress != null">
+        org_address = #{orgAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCoordinate != null">
+        org_coordinate = #{orgCoordinate,jdbcType=VARCHAR},
+      </if>
+      <if test="orgStatus != null">
+        org_status = #{orgStatus,jdbcType=CHAR},
+      </if>
+      <if test="provinceId != null">
+        province_id = #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="orgType != null">
+        org_type = #{orgType,jdbcType=CHAR},
+      </if>
+      <if test="orgBuType != null">
+        org_bu_type = #{orgBuType,jdbcType=CHAR},
+      </if>
+      <if test="orgLongitude != null">
+        org_longitude = #{orgLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="orgLatitude != null">
+        org_latitude = #{orgLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="countyId != null">
+        county_id = #{countyId,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null">
+        post_code = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="netCode != null">
+        net_code = #{netCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="salesPhone != null">
+        sales_phone = #{salesPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="servicePhone != null">
+        service_phone = #{servicePhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where org_id = #{orgId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demomstest.entity.Organaization">
+    update da_organization
+    set org_name = #{orgName,jdbcType=VARCHAR},
+      org_address = #{orgAddress,jdbcType=VARCHAR},
+      org_coordinate = #{orgCoordinate,jdbcType=VARCHAR},
+      org_status = #{orgStatus,jdbcType=CHAR},
+      province_id = #{provinceId,jdbcType=VARCHAR},
+      city_id = #{cityId,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      org_type = #{orgType,jdbcType=CHAR},
+      org_bu_type = #{orgBuType,jdbcType=CHAR},
+      org_longitude = #{orgLongitude,jdbcType=VARCHAR},
+      org_latitude = #{orgLatitude,jdbcType=VARCHAR},
+      area_id = #{areaId,jdbcType=VARCHAR},
+      county_id = #{countyId,jdbcType=VARCHAR},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      net_code = #{netCode,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      sales_phone = #{salesPhone,jdbcType=VARCHAR},
+      service_phone = #{servicePhone,jdbcType=VARCHAR}
+    where org_id = #{orgId,jdbcType=VARCHAR}
+  </update>
+</mapper>
